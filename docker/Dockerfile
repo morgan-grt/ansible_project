@@ -1,16 +1,16 @@
 FROM ubuntu:latest
 
-ENV TZ=Europe/Paris
+RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
 
-RUN DEBIAN_FRONTEND="noninteractive" apt update && apt install -y openssh-server \
+RUN apt update && apt install -y openssh-server \
 		sudo \
 		git \
 		openssl \
 		curl \
 		&& curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - \
-		&& echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
-		&& apt-get install -y -q nodejs \
-		npm
+		&& apt install -y -q nodejs
+
+RUN npm -v
 
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 blop 
 
