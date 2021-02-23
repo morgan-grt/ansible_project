@@ -6,7 +6,9 @@ RUN apt update && apt install -y openssh-server \
 		sudo \
 		git \
 		openssl \
-		curl
+		curl \
+		nodejs \
+		npm
 
 RUN curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash - \
 		&& apt-get install -y nodejs
