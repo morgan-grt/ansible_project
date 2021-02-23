@@ -7,9 +7,10 @@ RUN apt update && apt install -y openssh-server \
 		git \
 		iproute2 \
 		openssl \
-		curl \
 		nodejs \
-		npm
+		npm \
+		&& apt-get clean \
+		&& apt-get autoclean
 
 RUN node -v
 RUN npm -v

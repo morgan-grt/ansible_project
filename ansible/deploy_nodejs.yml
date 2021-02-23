@@ -3,18 +3,12 @@
   become: yes
 
   vars:
+    
     - gitrepo: https://9cbef11163ae1108cbc9d2a3dd11a553a5954695@github.com/morgan-grt/ansible_project_nodejs.git
     - appdir: /var/www/html
     - appuser: www-data
 
   tasks:
-  - name: Installation des differents packages
-    apt:
-      name:
-        - iproute2
-      update_cache: yes
-      state: latest
-      install_recommends: yes
 
   - name: Creation des repertoires
     file:
