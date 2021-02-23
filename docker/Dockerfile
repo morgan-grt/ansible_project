@@ -5,13 +5,11 @@ RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONT
 RUN apt update && apt install -y openssh-server \
 		sudo \
 		git \
+		iproute2 \
 		openssl \
 		curl \
 		nodejs \
 		npm
-
-RUN curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash - \
-		&& apt-get install -y nodejs
 
 RUN node -v
 RUN npm -v
