@@ -1,0 +1,11 @@
+---
+- hosts: servers
+  become: yes
+
+  vars:
+    - appdir: /var/www/html
+
+  tasks:
+  - name: Lancement du server nodejs
+    shell: cd '{{appdir}}' && npm run pm2r
+    ignore_errors: yes

@@ -1,0 +1,48 @@
+---
+- hosts: servers
+  become: yes
+
+  vars:
+    - gitrepo: https://github.com/morgan-grt/ansible_project.git
+    - appdir: /var/www/html
+    - appuser: www-data
+
+  tasks:
+  - name: Installation des differents packages
+    apt:
+      name: 
+        - npm
+        - iproute2
+      update_cache: yes
+      state: latest
+      install_recommends: yes
+
+  - name: Creation des repertoires
+    file:
+      state: directory
+      path: '{{appdir}}'
+      owner: '{{appuser}}'
+      group: '{{appuser}}'
+      mode: 0755
+
+  - name: Clonage du depot git
+    git:
+      repo: '{{gitrepo}}'
+      dest: '{{appdir}}'
+      force: yes
+
+  - name: Installation des packages npm
+    npm:
+      path: '{{appdir}}'
+
+  - name: Installation des certificats ssl
+    shell: cd '{{appdir}}' && mkdir -p certs/ && openssl req -x509 -newkey rsa:4096 -keyout certs/key.pem -out certs/cert.pem -days 365 -passout pass':'blop -batch
+
+  - name: Lancement du server
+    shell: cd '{{appdir}}' && npm run pm2r
+    ignore_errors: yes
+
+  - name: Recuperation des adresses ip
+    debug:
+      msg: "{{ hostvars[inventory_hostname]['ansible_%s' | format(item)].ipv4.address }}"
+    with_items: "{{ ansible_interfaces | difference(['lo',ansible_interfaces])}}"

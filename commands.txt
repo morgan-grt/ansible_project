@@ -1,0 +1,30 @@
+####sur la vm
+créer l'interface tap0:
+service au boot: init_tap0.service dans /etc/systemd/system
+rechargé avec: systemctl daemon-reload && systemctl start init_tap0.service
+sinon:
+sudo tunctl -g netdev -t tap0
+sudo ifconfig tap0 10.0.1.15 netmask 255.255.255.0 up
+
+###sur les docker:
+/etc/network/interfaces:
+
+auto eth0
+iface eth0 inet dhcp
+metric 0 #pour être en route par défault
+
+# Static config for eth1
+auto eth1
+iface eth1 inet static
+	address 10.0.1.11
+	netmask 255.255.255.0
+	gateway 10.0.1.1
+	metric 10
+
+	
+
+# creation du docker
+docker build -t nodejs_docker .
+
+# récupération des ips
+sudo arp-scan -l --interface=virbr0 -q -x
