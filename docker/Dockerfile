@@ -24,6 +24,7 @@ RUN npm install npm@latest -g
 
 ENV NPM_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules/npm
 ENV PATH      $NPM_PATH/bin:$PATH
+RUN export PATH="$NPM_PATH:$PATH"
 
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 blop 
 
