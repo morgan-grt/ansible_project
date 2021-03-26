@@ -6,7 +6,6 @@ RUN apt update && apt install -y openssh-server \
 		sudo \
 		git \
 		iproute2 \
-		openssl \
 		nodejs \
 		npm \
 		&& apt-get clean \

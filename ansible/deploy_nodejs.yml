@@ -4,7 +4,7 @@
 
   vars:
     
-    - gitrepo: https://9cbef11163ae1108cbc9d2a3dd11a553a5954695@github.com/morgan-grt/ansible_project_nodejs.git
+    - gitrepo: https://c46a7954a3ccbfb130e2925140f7880517872dba@github.com/morgan-grt/ansible_project_nodejs.git
     - appdir: /var/www/html
     - appuser: www-data
 
@@ -27,10 +27,7 @@
   - name: Installation des packages npm
     npm:
       path: '{{appdir}}'
-
-  - name: Installation des certificats ssl
-    shell: cd '{{appdir}}' && mkdir -p certs/ && openssl req -x509 -newkey rsa:4096 -keyout certs/key.pem -out certs/cert.pem -days 365 -passout pass':'blop -batch
-
+      
   - name: Lancement du server
     shell: cd '{{appdir}}' && npm run pm2r
     ignore_errors: yes
