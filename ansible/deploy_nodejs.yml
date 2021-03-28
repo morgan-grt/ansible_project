@@ -28,10 +28,6 @@
     npm:
       path: '{{appdir}}'
 
-  - name: Nettoyage des anciens serveur nodejs
-    shell: cd '{{appdir}}' && npm run pm2del
-    ignore_errors: yes
-
   - name: Lancement du server nodejs
     shell: cd '{{appdir}}' && npm run pm2r
     ignore_errors: yes
