@@ -28,7 +28,7 @@
     npm:
       path: '{{appdir}}'
 
-  - name: Suppression des anciens serveur nodejs
+  - name: Nettoyage des anciens serveur nodejs
     shell: cd '{{appdir}}' && npm run pm2del
     ignore_errors: yes
 
