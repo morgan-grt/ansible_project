@@ -6,6 +6,7 @@
     - appdir: /var/www/html
 
   tasks:
-  - name: Arret du server nodejs
+
+  - name: Arret du serveur nodejs
     shell: cd '{{appdir}}' && npm run pm2s
     ignore_errors: yes

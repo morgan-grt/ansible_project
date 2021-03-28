@@ -9,7 +9,7 @@ if [ -z "$1" ]
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
 		echo "-u : restart the nodejs servers";
-		echo "-rm : delete the nodejs servers process";
+		echo "-c : delete the nodejs servers process";
 else
 	echo $1
 	if [[ "$1" == '-r' ]]
@@ -24,7 +24,7 @@ else
 	elif [[ "$1" == '-u' ]]
 		then
 			ansible-playbook update_nodejs.yml;
-	elif [[ "$1" == '-rm' ]]
+	elif [[ "$1" == '-c' ]]
 		then
 			ansible-playbook delete_process_nodejs.yml;
 	else
@@ -33,6 +33,6 @@ else
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
 		echo "-u : restart the nodejs servers";
-		echo "-rm : delete the nodejs servers process";
+		echo "-c : delete the nodejs servers process";
 	fi
 fi

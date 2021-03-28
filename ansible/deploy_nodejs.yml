@@ -10,7 +10,7 @@
 
   tasks:
 
-  - name: Creation des repertoires
+  - name: Création des répertoires
     file:
       state: directory
       path: '{{appdir}}'
@@ -18,7 +18,7 @@
       group: '{{appuser}}'
       mode: 0755
 
-  - name: Clonage du depot git
+  - name: Clonage du dépôt git
     git:
       repo: '{{gitrepo}}'
       dest: '{{appdir}}'
@@ -28,11 +28,11 @@
     npm:
       path: '{{appdir}}'
 
-  - name: Lancement du server nodejs
+  - name: Lancement du serveur nodejs
     shell: cd '{{appdir}}' && npm run pm2r
     ignore_errors: yes
 
-  - name: Recuperation des adresses ip
+  - name: Récuperation des adresses ip
     debug:
       msg: "{{ hostvars[inventory_hostname]['ansible_%s' | format(item)].ipv4.address }}"
     with_items: "{{ ansible_interfaces | difference(['lo',ansible_interfaces])}}"

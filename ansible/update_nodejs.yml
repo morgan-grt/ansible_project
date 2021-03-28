@@ -6,11 +6,15 @@
     - appdir: /var/www/html
 
   tasks:
+
   - name: Mise à jour du fichier index.html
     shell: cd '{{appdir}}' && python3 update.py
 
-  - name: Redémarrage du server nodejs
+  - name: Redémarrage du serveur nodejs
     shell: cd '{{appdir}}' && npm run pm2u
     ignore_errors: yes
 
-
+  - name: Récuperation des adresses ip
+    debug:
+      msg: "{{ hostvars[inventory_hostname]['ansible_%s' | format(item)].ipv4.address }}"
+    with_items: "{{ ansible_interfaces | difference(['lo',ansible_interfaces])}}"

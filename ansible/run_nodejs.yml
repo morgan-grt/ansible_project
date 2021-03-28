@@ -7,11 +7,11 @@
 
   tasks:
     
-  - name: Lancement du server nodejs
+  - name: Lancement du serveur nodejs
     shell: cd '{{appdir}}' && npm run pm2r
     ignore_errors: yes
 
-  - name: Recuperation des adresses ip
+  - name: Récuperation des adresses ip
     debug:
       msg: "{{ hostvars[inventory_hostname]['ansible_%s' | format(item)].ipv4.address }}"
     with_items: "{{ ansible_interfaces | difference(['lo',ansible_interfaces])}}"
