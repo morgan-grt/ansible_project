@@ -1,7 +1,10 @@
+from pathlib import Path
+home = str(Path.home())
+
 ansible_path = '..//ansible//'
 ansible_host_file = ansible_path + 'ansible_hosts.cfg'
 
-gns3_path = '..//..//..//..//GNS3//'
+gns3_path = home + '//GNS3//'
 
 gns3_project_path = 'projects//pj_ansible_prof_morgan//'
 gns3_docker_path = 'project-files//docker//'

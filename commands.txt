@@ -24,7 +24,7 @@ iface eth1 inet static
 	
 
 # creation du docker
-docker build -t nodejs_docker .
+docker build -t ubuntu_nodejs .
 
 # récupération des ips
 sudo arp-scan -l --interface=virbr0 -q -x
