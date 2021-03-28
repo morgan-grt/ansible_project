@@ -10,7 +10,7 @@ if [ -z "$1" ]
 		echo "-r : run the nodejs servers";
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
-		echo "-u : restart the nodejs servers";
+		echo "-u : update the nodejs servers";
 		echo "-c : delete the nodejs servers process";
 else
 	echo $1
@@ -36,7 +36,7 @@ else
 		echo "-r : run the nodejs servers";
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
-		echo "-u : restart the nodejs servers";
+		echo "-u : update the nodejs servers";
 		echo "-c : delete the nodejs servers process";
 	fi
 fi
