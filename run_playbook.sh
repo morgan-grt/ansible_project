@@ -8,6 +8,8 @@ if [ -z "$1" ]
 		echo "-r : run the nodejs servers";
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
+		echo "-u : restart the nodejs servers";
+		echo "-rm : delete the nodejs servers process";
 else
 	echo $1
 	if [[ "$1" == '-r' ]]
@@ -22,11 +24,15 @@ else
 	elif [[ "$1" == '-u' ]]
 		then
 			ansible-playbook update_nodejs.yml;
+	elif [[ "$1" == '-rm' ]]
+		then
+			ansible-playbook delete_process_nodejs.yml;
 	else
 		echo "Bad parameter";
 		echo "-r : run the nodejs servers";
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
 		echo "-u : restart the nodejs servers";
+		echo "-rm : delete the nodejs servers process";
 	fi
 fi
