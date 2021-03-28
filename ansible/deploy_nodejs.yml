@@ -4,7 +4,7 @@
 
   vars:
     
-    - gitrepo: https://c46a7954a3ccbfb130e2925140f7880517872dba@github.com/morgan-grt/ansible_project_nodejs.git
+    - gitrepo: https://github.com/morgan-grt/ansible_project_nodejs.git
     - appdir: /var/www/html
     - appuser: www-data
 
@@ -27,8 +27,12 @@
   - name: Installation des packages npm
     npm:
       path: '{{appdir}}'
-      
-  - name: Lancement du server
+
+  - name: Suppression des anciens serveur nodejs
+    shell: cd '{{appdir}}' && npm run pm2del
+    ignore_errors: yes
+
+  - name: Lancement du server nodejs
     shell: cd '{{appdir}}' && npm run pm2r
     ignore_errors: yes
 

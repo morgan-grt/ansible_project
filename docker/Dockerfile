@@ -8,6 +8,7 @@ RUN apt update && apt install -y openssh-server \
 		iproute2 \
 		nodejs \
 		npm \
+		language-pack-fr \
 		&& apt-get clean \
 		&& apt-get autoclean
 

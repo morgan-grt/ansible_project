@@ -1,0 +1,16 @@
+---
+- hosts: servers
+  become: yes
+
+  vars:
+    - appdir: /var/www/html
+
+  tasks:
+  - name: Mise à jour du fichier index.html
+    shell: cd '{{appdir}}' && python3 update.py
+
+  - name: Redémarrage du server nodejs
+    shell: cd '{{appdir}}' && npm run pm2u
+    ignore_errors: yes
+
+
