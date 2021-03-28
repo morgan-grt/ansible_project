@@ -5,7 +5,8 @@ cd ansible/
 if [ -z "$1" ]
 	then
 		echo "Missing parameter";
-		echo "Select a paramter in the list below";
+		echo "Select a parameter in the list below:";
+		echo "";
 		echo "-r : run the nodejs servers";
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
@@ -30,7 +31,8 @@ else
 			ansible-playbook delete_process_nodejs.yml;
 	else
 		echo "Bad parameter";
-		echo "Select a paramter in the list below";
+		echo "Select a parameter in the list below:";
+		echo "";
 		echo "-r : run the nodejs servers";
 		echo "-d : deploy the nodejs servers";
 		echo "-s : stop the nodejs servers";
