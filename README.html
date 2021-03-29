@@ -19,10 +19,19 @@ a {
 <li><em>docker/</em> : contient le fichier de création des <em>dockers</em>  </li>
 <li><p><em>update_dockers_ips/</em> : contient le code <em>python</em> ainsi que les templates pour mettre à jour les ips  </p>
 </li>
-<li><p><em>pj_ansible.gns3project</em> : le projet gns3 en version portable  </p>
+<li><p><em>projet_annuel_ansible.gns3project</em> : le projet gns3 en version portable  </p>
 </li>
 <li><em>run.sh</em> : script principal, permet de lancer les playbooks mais aussi de mettre à jour les ips selon les<br>paramètres passés (<em>./run.sh -h</em> : pour afficher l&#39;aide)</li>
 <li><em>util.txt</em> : ensemble de commandes utiles pour  le bon fonctionnement au cas où</li>
+</ul>
+<h2 id="pr-requis-">Prérequis :</h2>
+<ul>
+<li><em>docker</em></li>
+<li><em>ansible</em></li>
+<li><em>gns3</em> et la librairie <em>virt-manager</em></li>
+<li>interfaces <em>tap0</em> avec comme adresse ip <em>10.0.1.1</em></li>
+<li>sur la vm, configurer deux interfaces : en nat et par pont  </li>
+<li>laisser le nom du projet gns3 tel quel</li>
 </ul>
 <h2 id="lancement-">Lancement :</h2>
 <p>Pour utiliser notre projet il faut pour commencer </p>

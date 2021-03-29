@@ -2,9 +2,18 @@
 créer l'interface tap0:
 service au boot: init_tap0.service dans /etc/systemd/system
 rechargé avec: systemctl daemon-reload && systemctl start init_tap0.service
-sinon:
+# sinon:
 sudo tunctl -g netdev -t tap0
-sudo ifconfig tap0 10.0.1.15 netmask 255.255.255.0 up
+sudo ifconfig tap0 10.0.1.1 netmask 255.255.255.0 up
+
+
+# creation du docker
+docker build -t ubuntu_nodejs .
+
+# récupération des ips
+sudo arp-scan -l --interface=virbr0 -q -x
+
+
 
 ###sur les docker:
 /etc/network/interfaces:
@@ -22,9 +31,3 @@ iface eth1 inet static
 	metric 10
 
 	
-
-# creation du docker
-docker build -t ubuntu_nodejs .
-
-# récupération des ips
-sudo arp-scan -l --interface=virbr0 -q -x

@@ -6,7 +6,7 @@ ansible_host_file = ansible_path + 'ansible_hosts.cfg'
 
 gns3_path = home + '//GNS3//'
 
-gns3_project_path = 'projects//pj_ansible_prof_morgan//'
+gns3_project_path = 'projects//projet_annuel_ansible//'
 gns3_docker_path = 'project-files//docker//'
 
 gns3_total_path = gns3_path + gns3_project_path + gns3_docker_path

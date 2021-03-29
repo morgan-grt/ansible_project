@@ -17,10 +17,21 @@ Le dossier comporte:
 - *docker/* : contient le fichier de création des *dockers*  
 - *update_dockers_ips/* : contient le code *python* ainsi que les templates pour mettre à jour les ips  
 
-- *pj_ansible.gns3project* : le projet gns3 en version portable  
+- *projet_annuel_ansible.gns3project* : le projet gns3 en version portable  
 - *run.sh* : script principal, permet de lancer les playbooks mais aussi de mettre à jour les ips selon les  
 paramètres passés (*./run.sh -h* : pour afficher l'aide)
 - *util.txt* : ensemble de commandes utiles pour  le bon fonctionnement au cas où
+
+
+
+## Prérequis : 
+
+- *docker*
+- *ansible*
+- *gns3* et la librairie *virt-manager*
+- interfaces *tap0* avec comme adresse ip *10.0.1.1*
+- sur la vm, configurer deux interfaces : en nat et par pont 
+- laisser le nom du projet gns3 tel quel 
 
 ## Lancement :
 
