@@ -1,0 +1,46 @@
+<html><head><style>body {
+   color: white;
+   background-color: #27282E;
+
+}
+
+a {
+   color: #df691a;
+}
+}
+</style></head><body><p>GUERET Morgan<br>CARDOSO Simon  </p>
+<hr>
+<h1 id="projet-annuel">Projet annuel</h1>
+<p>Ce projet consiste en la mise en place d&#39;un ensemble de serveurs web exécutant <em>nodejs</em> pouvant recevoir des<br>tâches à l&#39;aide de <em>Ansible</em>.<br>Le projet permet de présenter l&#39;automatisation de tâches en direction d&#39;un ensemble de machines (serveurs)<br>Les fichiers et dossiers disponibles permettent la mise en place et le déploiement de notre projet annuel.  </p>
+<h2 id="organisation-">Organisation :</h2>
+<p>Le dossier comporte:</p>
+<ul>
+<li><em>ansible/</em> : contient les différents fichiers de configuration pour <em>ansible</em> ainsi que les playbooks  </li>
+<li><em>docker/</em> : contient le fichier de création des <em>dockers</em>  </li>
+<li><p><em>update_dockers_ips/</em> : contient le code <em>python</em> ainsi que les templates pour mettre à jour les ips  </p>
+</li>
+<li><p><em>pj_ansible.gns3project</em> : le projet gns3 en version portable  </p>
+</li>
+<li><em>run.sh</em> : script principal, permet de lancer les playbooks mais aussi de mettre à jour les ips selon les<br>paramètres passés (<em>./run.sh -h</em> : pour afficher l&#39;aide)</li>
+<li><em>util.txt</em> : ensemble de commandes utiles pour  le bon fonctionnement au cas où</li>
+</ul>
+<h2 id="lancement-">Lancement :</h2>
+<p>Pour utiliser notre projet il faut pour commencer </p>
+<ul>
+<li>construire le <em>docker</em> pour les serveurs :  <pre><code class="lang-bash"><span class="hljs-symbol">cd</span> docker/
+<span class="hljs-symbol">docker</span> <span class="hljs-keyword">build </span>-t ubuntu_nodejs .
+</code></pre>
+</li>
+<li><p>ajouter à gns3 le <em>docker</em> créé dans les préférences (avec 2 adapteurs) puis importer notre projet gns3.  </p>
+</li>
+<li><p>mettre à jour les adresses ips en lançant <em>run.sh</em> avec le paramètre <em>-i</em>  </p>
+<pre><code class="lang-bash">./<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span> -<span class="hljs-built_in">i</span>
+</code></pre>
+</li>
+<li><p>démarrer toutes les machines dans gns3 (ensuite atteindre quelques secondes)</p>
+</li>
+<li><p>vous pouvez maintenant utiliser les playbooks <em>ansible</em><br>Le plus simple est d&#39;exécuter le fichier <em>run.sh</em> avec les paramètres souhaités (voir <em>./run.sh -h</em>)  </p>
+</li>
+</ul>
+<p>A noter : il peut y avoir un problème avec l&#39;exécution du script si par exemple les servers nodejs sont<br>arrêtés et que nous demandons de les arrêter à nouveau<br>Ou bien si nous demandons de supprimer les processus avant le déploiement  </p>
+</body></html>
